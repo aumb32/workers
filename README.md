@@ -37,7 +37,7 @@ wrangler publish
 
 ##5.访问地址
 xxx.workers.dev，是你的子域名，xxx是你的账号
-look3w.xxx.workers.dev 就是当前发布的访问链接
+cors.xxx.workers.dev 就是当前发布的访问链接
 
 (可选)如果使用自定义域名，需要配置一个域名绑定CNAME：xxx.workers.dev，并开启CDN，即点亮黄云图标
 
