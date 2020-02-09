@@ -30,7 +30,9 @@ cd cors/
 
 ## 4. 配置邮箱秘钥,构建,发布
 wrangler config
+
 wrangler build
+
 wrangler publish
 
 ##5.访问地址
