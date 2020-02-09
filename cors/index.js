@@ -33,7 +33,7 @@ async function handleRequest(request) {
       //输出提示
       outBody = JSON.stringify([
         "Usage：Host/{URL}",
-        "Source：https://github.com/netnr/workers"
+        "Source：https://github.com/aumb32/workers"
       ]);
       outCt = "application/json";
     } else {
