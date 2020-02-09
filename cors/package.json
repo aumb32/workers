@@ -8,7 +8,7 @@
     "look3w": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write '**/*.{js,css,json,md}'"
   },
-  "author": "netnr",
+  "author": "netnr  https://github.com/netnr/workers ",
   "license": "MIT",
   "devDependencies": {
     "prettier": "^1.18.2"
