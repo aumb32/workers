@@ -1,93 +1,53 @@
-﻿# Cloudflare Workers
 
-## ❤ api
-常用的接口
+#前提条件
+##1.(必须) 注册[Cloudflare账号](https://dash.cloudflare.com/sign-up "Cloudflare账号"), 设置 Zone ID. 记录下来,Account ID,  Zone ID,  abcd.workers.dev
+abcd.workers.dev 是免费的个人二级域名
 
-### 接口
-- 查看列表：<https://api.zme.ink>
+##2.(可选) 使用自己域名.在Cloudflare 后台绑定自己域名.
 
----
+#步骤
+## 1. 安装cloudflare的cli工具,用于管理cloudflare workers 项目代码和部署上线
+npm i @cloudflare/wrangler -g
+### 如果出现错误 Error: EACCES: permission denied, mkdir
+npm install -g @cloudflare/wrangler --unsafe-perm=true --allow-root
 
-## ❤ cors
-支持跨域请求（转换不支持跨域请求的接口），可直接发起 ajax、fetch  
-支持HTTPS（解决远程数据接口不支持HTTPS）
+##2.克隆项目
+git clone https://github.com/aumb32/workers.git
 
-### 接口
-- `Host/{URL}`
-- `https://cors.zme.ink/{URL}`
+## 3. 修改配置文件
+cd cors/
+修改 wrangler.toml
 
-### 示例
-- <https://cors.zme.ink/https://api.github.com>
-- <https://cors.zme.ink/http://nginx.org/download/nginx-1.16.1.tar.gz>
+	account_id 替换为自己的
+	zone_id 替换为自己的
 
-```js
-// 拷贝到控制台运行
-var $url = "http://wthrcdn.etouch.cn/weather_mini?citykey=101040100";
-fetch("https://cors.zme.ink/" + $url).then(x => x.text()).then(console.log)
-```
+(可选) 如果用自己的域名,假如自己域名 cors.zme.ink
 
----
+	route = "" 替换为 route = "cors.zme.ink/*"
+	workers_dev = true 替换为 workers_dev = false
 
-## ❤ raw
-GitHub 仓库内容直接浏览，替换 `raw.githubusercontent.com`  
-处理 svg、js、css 输出的 `Content-Type`
+## 4. 配置邮箱秘钥,构建,发布
+wrangler config
+wrangler build
+wrangler publish
 
-### 接口
-- `Host/{name}/{repos}/{branch}/{path}`
-- 替换 `githubusercontent.com` 为 `zme.ink`
+##5.访问地址
+xxx.workers.dev，是你的子域名，xxx是你的账号
+look3w.xxx.workers.dev 就是当前发布的访问链接
 
-### 示例
-- <https://raw.githubusercontent.com/netnr/static/master/favicon.svg>
-- <https://raw.zme.ink/netnr/static/master/favicon.svg>
+(可选)如果使用自定义域名，需要配置一个域名绑定CNAME：xxx.workers.dev，并开启CDN，即点亮黄云图标
 
----
+##免费套餐额度
 
-## ❤ upload
-基于 Token 授权上传（可限制格式的）文件到（白名单）GitHub仓库
+    每天 10 万个请求（UTC + 0）
+    每 10 分钟 1000 个请求
+    每个请求最多10ms CPU时间
+    首次请求后的最低延迟
 
-### 接口
-- `upload.zme.ink`
-- `POST`请求，参数：
 
-```
-// 二进制的流的方式发送文件，整个上传内容都为文件内容， 其他参数在URL上
-binary
 
-// url 参数
-or:{owner}/{repos} 账号/仓库
-name:filename.jpg 文件名
-pathname:（可选）自定义路径
-```
 
-### 示例
-- https://gs.netnr.com
 
----
 
-### 安装
-- clone 项目，进入子目录（代表一个 worker）
-- 编辑 `index.js` 和 `wrangler.toml` (配置密钥)
-- `wrangler config` 配置邮箱、密钥
-- `wrangler build` 构建
-- `wrangler publish` 发布
-- 详细文档：<https://developers.cloudflare.com/workers/quickstart>
-
-### 套餐
- CPU | 日请求 | 突发速率 | 脚本大小 
- ---- | ---- | ---- | ---- 
- 10ms | 100,000 | 10分钟1000个请求 | 压缩后1M
-
-详情：https://developers.cloudflare.com/workers/about/limits/
-
-### Source
-- <https://github.com/netnr/workers>
-
----
-
-### 通知
-
-额度顶不住了，使用量大请用自己的账号搭建服务吧，谢谢！！！
-
-![图片说明](https://static.netnr.com/2019/11/03/0752457693.png)
-
-如果你不想麻烦，也许你可以[赞助](https://ss.netnr.com/contact)我升级为付费用户 $5/month 1千万请求量，请备注来自 cfw
+修改来源:
+https://github.com/netnr/workers
