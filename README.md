@@ -1,16 +1,16 @@
 
-## 0 前提条件
+### 0 前提条件
 
-###(必须) 注册[Cloudflare账号](https://dash.cloudflare.com/sign-up "Cloudflare账号"), 设置 Zone ID. 记录下来,Account ID,  Zone ID,  abcd.workers.dev
+####(必须) 注册[Cloudflare账号](https://dash.cloudflare.com/sign-up "Cloudflare账号"), 设置 Zone ID. 记录下来,Account ID,  Zone ID,  abcd.workers.dev
 
 abcd.workers.dev 是免费的个人二级域名
 
 ###(可选) 使用自己域名.在Cloudflare 后台绑定自己域名.
 
-#步骤
-## 1. 安装cloudflare的cli工具,用于管理cloudflare workers 项目代码和部署上线
+##步骤
+### 1. 安装cloudflare的cli工具,用于管理cloudflare workers 项目代码和部署上线
 npm i @cloudflare/wrangler -g
-### 如果出现错误 Error: EACCES: permission denied, mkdir
+#### 如果出现错误 Error: EACCES: permission denied, mkdir
 npm install -g @cloudflare/wrangler --unsafe-perm=true --allow-root
 
 ##2.克隆项目
