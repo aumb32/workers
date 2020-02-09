@@ -1,6 +1,8 @@
 
 #前提条件
+
 ##1.(必须) 注册[Cloudflare账号](https://dash.cloudflare.com/sign-up "Cloudflare账号"), 设置 Zone ID. 记录下来,Account ID,  Zone ID,  abcd.workers.dev
+
 abcd.workers.dev 是免费的个人二级域名
 
 ##2.(可选) 使用自己域名.在Cloudflare 后台绑定自己域名.
